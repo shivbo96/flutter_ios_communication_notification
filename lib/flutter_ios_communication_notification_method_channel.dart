@@ -7,11 +7,12 @@ import 'flutter_ios_communication_notification_platform_interface.dart';
 import 'models/notification_info_model.dart';
 
 /// An implementation of [FlutterIosCommunicationNotificationPlatform] that uses method channels.
-class MethodChannelFlutterIosCommunicationNotification extends FlutterIosCommunicationNotificationPlatform {
+class MethodChannelFlutterIosCommunicationNotification
+    extends FlutterIosCommunicationNotificationPlatform {
   /// The method channel used to interact with the native platform.
   @visibleForTesting
-  final methodChannel = const MethodChannel('flutter_ios_communication_notification');
-
+  final methodChannel =
+      const MethodChannel('flutter_ios_communication_notification');
 
   @override
   Future<String?> getInitialPayload() async {
@@ -41,7 +42,8 @@ class MethodChannelFlutterIosCommunicationNotification extends FlutterIosCommuni
   Future<bool> isAvailable() async {
     if (!Platform.isIOS) return false;
 
-    final bool isAvailable = await methodChannel.invokeMethod<bool>("isAvailable") ?? false;
+    final bool isAvailable =
+        await methodChannel.invokeMethod<bool>("isAvailable") ?? false;
 
     return isAvailable;
   }

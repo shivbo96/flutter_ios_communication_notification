@@ -35,8 +35,11 @@ void main() {
   final FlutterIosCommunicationNotificationPlatform initialPlatform =
       FlutterIosCommunicationNotificationPlatform.instance;
 
-  test('$MethodChannelFlutterIosCommunicationNotification is the default instance', () {
-    expect(initialPlatform, isInstanceOf<MethodChannelFlutterIosCommunicationNotification>());
+  test(
+      '$MethodChannelFlutterIosCommunicationNotification is the default instance',
+      () {
+    expect(initialPlatform,
+        isInstanceOf<MethodChannelFlutterIosCommunicationNotification>());
   });
 
   // test('getPlatformVersion', () async {

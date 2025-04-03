@@ -15,7 +15,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
-  final _flutterIosCommunicationNotificationPlugin = FlutterIosCommunicationNotification();
+  final _flutterIosCommunicationNotificationPlugin =
+      FlutterIosCommunicationNotification();
   Timer? _backgroundTimer;
 
   @override
@@ -45,16 +46,19 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   }
 
   void _showNotification() async {
-    final isAvailableForCommunication = await _flutterIosCommunicationNotificationPlugin.isAvailable();
+    final isAvailableForCommunication =
+        await _flutterIosCommunicationNotificationPlugin.isAvailable();
     debugPrint('isAvailableForCommunication: $isAvailableForCommunication');
 
     if (isAvailableForCommunication) {
       _flutterIosCommunicationNotificationPlugin.showNotification(
         NotificationInfo(
           senderName: "Shivam ",
-          imageUrl: 'https://fastly.picsum.photos/id/368/536/354.jpg?hmac=2b0UU6Y-8XxkiRBhatgBJ-ni3aWJ5CcVVENpX-mEiIA',
+          imageUrl:
+              'https://fastly.picsum.photos/id/368/536/354.jpg?hmac=2b0UU6Y-8XxkiRBhatgBJ-ni3aWJ5CcVVENpX-mEiIA',
           value: "This is payload, will receive when click this notification",
-          content: "Hello! This notification is triggered after 5 seconds of background time.",
+          content:
+              "Hello! This notification is triggered after 5 seconds of background time.",
         ),
       );
     }
@@ -83,7 +87,8 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
             Center(
               child: GestureDetector(
                 onTap: () {
-                  debugPrint("Notification will trigger 5 seconds after backgrounding the app.");
+                  debugPrint(
+                      "Notification will trigger 5 seconds after backgrounding the app.");
                 },
                 child: const Text(
                   'Trigger Notification After 5 Sec of Background',

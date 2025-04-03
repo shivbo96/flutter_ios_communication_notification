@@ -61,6 +61,10 @@ class NotificationInfo {
 
   @override
   int get hashCode {
-    return senderName.hashCode ^ imageUrl.hashCode ^ content.hashCode ^ value.hashCode ^ onPressed.hashCode;
+    return senderName.hashCode ^
+        imageUrl.hashCode ^
+        content.hashCode ^
+        value.hashCode ^
+        onPressed.hashCode;
   }
 }

@@ -3,13 +3,15 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 import 'flutter_ios_communication_notification_method_channel.dart';
 import 'models/notification_info_model.dart';
 
-abstract class FlutterIosCommunicationNotificationPlatform extends PlatformInterface {
+abstract class FlutterIosCommunicationNotificationPlatform
+    extends PlatformInterface {
   /// Constructs a FlutterIosCommunicationNotificationPlatform.
   FlutterIosCommunicationNotificationPlatform() : super(token: _token);
 
   static final Object _token = Object();
 
-  static FlutterIosCommunicationNotificationPlatform _instance = MethodChannelFlutterIosCommunicationNotification();
+  static FlutterIosCommunicationNotificationPlatform _instance =
+      MethodChannelFlutterIosCommunicationNotification();
 
   /// The default instance of [FlutterIosCommunicationNotificationPlatform] to use.
   ///

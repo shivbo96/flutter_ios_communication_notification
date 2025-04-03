@@ -5,11 +5,14 @@ import 'package:flutter_ios_communication_notification/flutter_ios_communication
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  MethodChannelFlutterIosCommunicationNotification platform = MethodChannelFlutterIosCommunicationNotification();
-  const MethodChannel channel = MethodChannel('flutter_ios_communication_notification');
+  MethodChannelFlutterIosCommunicationNotification platform =
+      MethodChannelFlutterIosCommunicationNotification();
+  const MethodChannel channel =
+      MethodChannel('flutter_ios_communication_notification');
 
   setUp(() {
-    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger.setMockMethodCallHandler(
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(
       channel,
       (MethodCall methodCall) async {
         return '42';
@@ -18,7 +21,8 @@ void main() {
   });
 
   tearDown(() {
-    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger.setMockMethodCallHandler(channel, null);
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(channel, null);
   });
 
   test('getPlatformVersion', () async {
