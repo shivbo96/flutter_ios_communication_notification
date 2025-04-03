@@ -53,7 +53,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     if (isAvailableForCommunication) {
       _flutterIosCommunicationNotificationPlugin.showNotification(
         NotificationInfo(
-          senderName: "Shivam ",
+          senderName: "Shivam",
           imageUrl:
               'https://fastly.picsum.photos/id/368/536/354.jpg?hmac=2b0UU6Y-8XxkiRBhatgBJ-ni3aWJ5CcVVENpX-mEiIA',
           value: "This is payload, will receive when click this notification",
