@@ -1,3 +1,5 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+* Initial release with all basic functionality
+* Working example app
+* Support for iOS 15 and above
