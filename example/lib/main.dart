@@ -15,7 +15,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
-  final _flutterIosCommunicationNotificationPlugin = FlutterIosCommunicationNotification();
+  final _flutterIosCommunicationNotificationPlugin =
+      FlutterIosCommunicationNotification();
   Timer? _backgroundTimer;
 
   @override
@@ -27,10 +28,8 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       // TODO: do somethings
     });
 
-
-
     FlutterIosCommunicationNotification().setOnClickNotification((payload) {
-    // TODO: do somethings
+      // TODO: do somethings
     });
   }
 
