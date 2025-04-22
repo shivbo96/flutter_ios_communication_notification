@@ -4,12 +4,17 @@ import UserNotifications
 
 public class CommunicationNotificationPlugin {
     func showNotification(_ notificationInfo: NotificationInfo) {
-    print("showNotification notificationInfo:\(notificationInfo)")
+      print("showNotification notificationInfo:\(notificationInfo)")
         let notificationCenter = UNUserNotificationCenter.current()
         notificationCenter.getNotificationSettings {
             settings in switch settings.authorizationStatus {
             case .authorized:
-                self.dispatchNotification(notificationInfo)
+                notificationCenter.requestAuthorization(options: [.alert, .sound]) {
+                    didAllow, _ in
+                    if didAllow {
+                        self.dispatchNotification(notificationInfo)
+                    }
+                }
             case .denied:
                 return
             case .notDetermined:
@@ -23,7 +28,7 @@ public class CommunicationNotificationPlugin {
             }
         }
     }
-    
+
    func dispatchNotification(_ notificationInfo: NotificationInfo) {
        if #available(iOS 15.0, *) {
 
@@ -50,7 +55,7 @@ public class CommunicationNotificationPlugin {
 
            // Download the image asynchronously
            DispatchQueue.global(qos: .background).async {
-               
+
                let task = URLSession.shared.dataTask(with: imageUrl) { data, response, error in
                                    guard let imageData = data, error == nil else {
                                        print("Failed to download image: \(error?.localizedDescription)")
@@ -119,8 +124,24 @@ public class CommunicationNotificationPlugin {
                                task.resume()
                            }
        }else {
-           // Fallback on earlier versions
-           print("iOS 15.0 or lower")
+           // Fallback for iOS 14/13
+              let uuid = UUID().uuidString
+              let currentTime = Date().timeIntervalSince1970
+              let identifier = "\(FlutterIosCommunicationConstant.prefixIdentifier):\(uuid):\(currentTime)"
+
+              let content = UNMutableNotificationContent()
+              content.title = notificationInfo.senderName
+              content.body = notificationInfo.content
+              content.sound = UNNotificationSound.default
+              content.userInfo = ["data": notificationInfo.value]
+
+              let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
+
+              UNUserNotificationCenter.current().add(request) { error in
+                  if let error = error {
+                      print("Error adding notification: \(error)")
+                  }
+              }
        }
    }
 

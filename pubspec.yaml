@@ -1,6 +1,6 @@
 name: flutter_ios_communication_notification
 description: "Flutter plugin for displaying iOS communication notifications. Easily integrate notifications into your Flutter app. Compatible with iOS 15 and above."
-version: 0.0.1
+version: 0.0.2
 homepage: https://www.techaheadcorp.com/
 repository: https://github.com/shivbo96/flutter_ios_communication_notification
 
